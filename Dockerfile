@@ -13,6 +13,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 		build-essential \
 		python-dev \
 		sudo \
+		libglu-dev \
+		libgl1-mesa-dev\
 	&& apt-get clean
 
 # Run all python installs
