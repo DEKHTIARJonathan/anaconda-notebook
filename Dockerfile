@@ -13,9 +13,15 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 		build-essential \
 		python-dev \
 		sudo \
+		vim \
 		libglu-dev \
-		libgl1-mesa-dev\
+		libgl1-mesa-dev \
+		pwgen \
 	&& apt-get clean
+
+ADD set_root_pw.sh /set_root_pw.sh
+RUN chmod +x /set_root_pw.sh	
+CMD ["/set_root_pw.sh"]
 
 # Run all python installs
 # Perform any cleanup of the install as needed

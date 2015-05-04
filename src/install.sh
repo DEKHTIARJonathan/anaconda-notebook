@@ -63,12 +63,11 @@ cp -a /tmp/notebooks $HOME/notebooks
 
 #conda package update
 export PATH=~/anaconda/bin:$PATH
-conda update --yes --all
-source activate python2
-conda update --yes --all
+$CONDA3 update --yes --all
+$CONDA2 update --yes --all
 
 #conda package install
-conda install --yes vtk
+$CONDA2 install --yes vtk
 
 # cleanup
 rm -rf $HOME/Anaconda.sh
