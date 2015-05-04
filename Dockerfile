@@ -19,7 +19,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 		pwgen \
 	&& apt-get clean
 
-ADD set_root_pw.sh /set_root_pw.sh
+ADD src/set_root_pw.sh /set_root_pw.sh
 RUN chmod +x /set_root_pw.sh	
 CMD ["/set_root_pw.sh"]
 
