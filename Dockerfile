@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Nick Roth "nlr06886@gmail.com"
+MAINTAINER Jonathan DEKHTIAR "contact@jonathandekhtiar.eu"
 
 # Link in our build files to the docker image
 ADD src/ /tmp
@@ -12,6 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 		wget \
 		build-essential \
 		python-dev \
+		sudo \
 	&& apt-get clean
 
 # Run all python installs

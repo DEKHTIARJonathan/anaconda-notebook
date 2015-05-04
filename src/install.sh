@@ -61,6 +61,16 @@ chown condauser:condauser $HOME/.ipython/profile_default/security -R
 mkdir $HOME/notebooks
 cp -a /tmp/notebooks $HOME/notebooks
 
+#conda package update
+conda update --yes --all
+source activate python2
+conda update --yes --all
+
+#conda package install
+conda install --yes vtk
+
+
+
 # cleanup
 rm -rf $HOME/Anaconda.sh
 rm -rf $HOME/temp
