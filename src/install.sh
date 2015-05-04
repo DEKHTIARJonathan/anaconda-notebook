@@ -62,14 +62,13 @@ mkdir $HOME/notebooks
 cp -a /tmp/notebooks $HOME/notebooks
 
 #conda package update
+export PATH=~/anaconda/bin:$PATH
 conda update --yes --all
 source activate python2
 conda update --yes --all
 
 #conda package install
 conda install --yes vtk
-
-
 
 # cleanup
 rm -rf $HOME/Anaconda.sh
