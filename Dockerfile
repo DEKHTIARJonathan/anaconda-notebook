@@ -7,8 +7,8 @@ ADD src/ /tmp
 # Run all ubuntu updates and apt-get installs
 RUN export DEBIAN_FRONTEND=noninteractive && \
 	apt-get update && \
-	apt-get upgrade -y && \
-	apt-get install -y git \
+	apt-get upgrade -y --fix-missing&& \
+	apt-get install -y --fix-missing git \
 		wget \
 		build-essential \
 		python-dev \
@@ -26,8 +26,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 # Perform any cleanup of the install as needed
 # Copy notebook config into ipython directory
 # Make sure our user owns the directory
+RUN chmod +x /tmp/install.sh
 RUN /tmp/install.sh && \
-	apt-get --purge -y autoremove && \
 	cp /tmp/ipython_notebook_config.py /home/condauser/.ipython/profile_default/ && \
 	cp /tmp/matplotlib_nb_init.py /home/condauser/.ipython/profile_default/startup && \
 	chown condauser:condauser /home/condauser -R
@@ -38,6 +38,9 @@ ENV PY3PATH=/home/condauser/anaconda3/bin
 
 # Install the python2 ipython kernel
 RUN $PY2PATH/python $PY2PATH/ipython kernelspec install-self
+
+RUN chmod +x /tmp/packageInstall.sh
+RUN /tmp/packageInstall.sh
 
 # Setup our environment for running the ipython notebook
 EXPOSE 8888

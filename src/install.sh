@@ -17,6 +17,8 @@ PIP2=$PY2PATH/pip
 # Create condauser
 useradd --create-home --home-dir $HOME --shell /bin/bash condauser
 
+chown condauser:condauser /home/condauser -R
+
 # Download Anaconda
 if [ ! -f /tmp/Anaconda.sh ];
 then
@@ -38,15 +40,14 @@ export PATH=\"$PY3PATH:\$PATH\"" >> $BASH_RC
 # clone ipython into temp directory
 mkdir $HOME/temp
 cd $HOME/temp
+
 git clone --recursive -b 3.x https://github.com/ipython/ipython.git ipython
+chown condauser:condauser /home/condauser -R
 chmod -R +rX $HOME/temp/ipython
 
 # python 3 ipython install
-$CONDA3 update --yes --all
-$CONDA3 install --yes pyqt
 $CONDA3 install --yes jsonschema
 $CONDA3 update --yes matplotlib
-
 $PIP3 install file://$HOME/temp/ipython
 $PIP3 install terminado mistune
 
@@ -54,9 +55,6 @@ $PIP3 install terminado mistune
 $CONDA3 create --yes -n python2 python=2 pip pyzmq
 
 # python 2 ipython install
-$CONDA2 update --yes --all
-$CONDA2 install --yes pyqt
-$CONDA2 install --yes vtk
 $CONDA2 install --yes jsonschema
 $PIP2 install file://$HOME/temp/ipython
 $PIP2 install terminado mistune
