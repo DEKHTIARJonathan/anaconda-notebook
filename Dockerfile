@@ -16,12 +16,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 		vim \
 		libglu-dev \
 		libgl1-mesa-dev \
-		pwgen \
+		libxtst6 \
 	&& apt-get clean
 
-ADD src/set_root_pw.sh /set_root_pw.sh
-RUN chmod +x /set_root_pw.sh	
-CMD ["/set_root_pw.sh"]
 
 # Run all python installs
 # Perform any cleanup of the install as needed
