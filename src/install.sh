@@ -42,8 +42,11 @@ git clone --recursive -b 3.x https://github.com/ipython/ipython.git ipython
 chmod -R +rX $HOME/temp/ipython
 
 # python 3 ipython install
+$CONDA3 update --yes --all
+$CONDA3 install --yes pyqt
 $CONDA3 install --yes jsonschema
 $CONDA3 update --yes matplotlib
+
 $PIP3 install file://$HOME/temp/ipython
 $PIP3 install terminado mistune
 
@@ -51,6 +54,9 @@ $PIP3 install terminado mistune
 $CONDA3 create --yes -n python2 python=2 pip pyzmq
 
 # python 2 ipython install
+$CONDA2 update --yes --all
+$CONDA2 install --yes pyqt
+$CONDA2 install --yes vtk
 $CONDA2 install --yes jsonschema
 $PIP2 install file://$HOME/temp/ipython
 $PIP2 install terminado mistune
@@ -64,20 +70,10 @@ cp -a /tmp/notebooks $HOME/notebooks
 #conda package update
 export PATH=~/anaconda/bin:$PATH
 
-#conda Python3 package update
-conda update --yes --all
-conda install --yes pyqt
-
-
-#conda Python2 package update
-source activate python2
-conda update --yes --all
-conda install --yes pyqt
-conda install --yes vtk
-
 #Modifying Passwords
 echo "root:root" | chpasswd
 echo "condauser:condauser" | chpasswd
+echo 'condauser ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 # cleanup
 rm -rf $HOME/Anaconda.sh

@@ -17,6 +17,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 		libglu-dev \
 		libgl1-mesa-dev \
 		libxtst6 \
+		libxt-dev \
+		libxt6 \
 	&& apt-get clean
 
 
@@ -25,7 +27,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 # Copy notebook config into ipython directory
 # Make sure our user owns the directory
 RUN /tmp/install.sh && \
-	apt-get --purge -y autoremove wget && \
+	apt-get --purge -y autoremove && \
 	cp /tmp/ipython_notebook_config.py /home/condauser/.ipython/profile_default/ && \
 	cp /tmp/matplotlib_nb_init.py /home/condauser/.ipython/profile_default/startup && \
 	chown condauser:condauser /home/condauser -R
