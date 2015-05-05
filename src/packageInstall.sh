@@ -1,5 +1,6 @@
 #!/bin/bash
-
+echo 'ok'
+'''
 # Constants
 HOME=/home/condauser
 BASH_RC=/home/condauser/.bashrc
@@ -30,3 +31,4 @@ $CONDA2 update --yes --all
 $CONDA2 install --yes pyqt
 $CONDA2 install --yes vtk
 $CONDA2 install --yes jsonschema
+'''
