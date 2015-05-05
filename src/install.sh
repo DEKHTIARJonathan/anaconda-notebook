@@ -11,6 +11,7 @@ CONDA3=$PY3PATH/conda
 PIP3=$PY3PATH/pip
 
 # python 2
+CONDA2=$PY2PATH/conda
 PIP2=$PY2PATH/pip
 
 # Create condauser
@@ -45,6 +46,8 @@ chown condauser:condauser /home/condauser -R
 chmod -R +rX $HOME/temp/ipython
 
 # python 3 ipython install
+$CONDA3 install --yes jsonschema
+$CONDA3 update --yes matplotlib
 $PIP3 install file://$HOME/temp/ipython
 $PIP3 install terminado mistune
 
@@ -52,6 +55,7 @@ $PIP3 install terminado mistune
 $CONDA3 create --yes -n python2 python=2 pip pyzmq
 
 # python 2 ipython install
+$CONDA2 install --yes jsonschema
 $PIP2 install file://$HOME/temp/ipython
 $PIP2 install terminado mistune
 
@@ -60,9 +64,6 @@ $PY3PATH/ipython profile create default --ipython-dir $HOME/.ipython
 chown condauser:condauser $HOME/.ipython/profile_default/security -R
 mkdir $HOME/notebooks
 cp -a /tmp/notebooks $HOME/notebooks
-
-#conda package update
-export PATH=~/anaconda/bin:$PATH
 
 #Modifying Passwords
 echo "root:root" | chpasswd
