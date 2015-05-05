@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Constants
 HOME=/home/condauser
 BASH_RC=/home/condauser/.bashrc
@@ -18,12 +20,13 @@ cd $HOME
 
 #conda package install - Python 3
 export PATH=~/anaconda3/bin:$PATH
-conda update --yes --all
-conda install --yes pyqt
+$CONDA3 update --yes --all
+$CONDA3 install --yes pyqt
+$CONDA3 install --yes jsonschema
 
 #conda package install - Python 2
-export PATH=~/anaconda3/envs:$PATH
 source activate python2
-conda update --yes --all
-conda install --yes pyqt
-conda install --yes vtk
+$CONDA2 update --yes --all
+$CONDA2 install --yes pyqt
+$CONDA2 install --yes vtk
+$CONDA2 install --yes jsonschema
