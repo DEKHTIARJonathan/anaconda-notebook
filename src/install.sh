@@ -41,8 +41,7 @@ export PATH=\"$PY3PATH:\$PATH\"" >> $BASH_RC
 mkdir $HOME/temp
 cd $HOME/temp
 
-git clone --recursive -b 3.x https://github.com/ipython/ipython.git ipython
-chown condauser:condauser /home/condauser -R
+git clone --recursive https://github.com/ipython/ipython.git ipython
 chmod -R +rX $HOME/temp/ipython
 
 # python 3 ipython install
